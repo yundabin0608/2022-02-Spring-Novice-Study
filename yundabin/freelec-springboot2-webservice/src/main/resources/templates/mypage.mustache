@@ -1,0 +1,25 @@
+{{>layout/header}}
+
+<div class="inform" align="center">
+    <div style="width:35%; height:150px; border:1px solid red; float:left;">
+        <img style="width:40%; height: 150px;"  src="{{userPicture}}">
+    </div>
+    <div style="width:65%; height:150px; border:1px solid blue; float:right;">
+        <div class="inform-text">
+            <h3>{{userName}} 님의 마이페이지</h3>
+            email : {{userEmail}}
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<div class="butts" align="center">
+    <div style="width:45%; height:40px; float:left; text-align:center ">
+        <a href="/myposts" role="button" class="btn btn-secondary" id="btn-show-posts">내가 쓴 게시글</a>
+    </div>
+    <div style="width:45%; height:40px; float:right; text-align:center">
+        <a href="/mycomments" role="button" class="btn btn-secondary" id="btn-show-comments">내가 쓴 댓글</a>
+    </div>
+</div>
+
+{{>layout/footer}}

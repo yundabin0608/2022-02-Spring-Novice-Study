@@ -1,0 +1,22 @@
+{{>layout/header}}
+
+<table class="table table-horizontal table-bordered">
+    <thead class="thead-strong">
+    <tr>
+        <th>게시글 번호</th>
+        <th>제목</th>
+        <th>최종 수정일</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    {{#posts}}
+        <tr>
+            <td>{{id}}</td>
+            <td><a href="/posts/detail/{{id}}">{{title}}</a></td>
+            <td>{{modifiedDate}}</td>
+        </tr>
+    {{/posts}}
+    </tbody>
+</table>
+
+{{>layout/footer}}

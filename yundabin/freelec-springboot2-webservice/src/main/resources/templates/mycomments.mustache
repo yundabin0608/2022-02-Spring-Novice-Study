@@ -1,0 +1,22 @@
+{{>layout/header}}
+
+<table class="table table-horizontal table-bordered">
+    <thead class="thead-strong">
+    <tr>
+        <th>게시글 번호</th>
+        <th>게시글 제목</th>
+        <th>댓글 내용</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    {{#comments}}
+        <tr>
+            <td><a href="/posts/detail/{{posts.id}}">{{posts.id}}</a></td>
+            <td>{{posts.title}}</td>
+            <td>{{contents}}</td>
+        </tr>
+    {{/comments}}
+    </tbody>
+</table>
+
+{{>layout/footer}}

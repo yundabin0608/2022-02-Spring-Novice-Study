@@ -1,5 +1,7 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.config.auth.LoginUser;
+import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoldu.book.springboot.service.posts.PostsService;
 import com.jojoldu.book.springboot.web.dto.PostsListResponseDto;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
@@ -19,8 +21,9 @@ public class PostsApiController {
     private final PostsService postsService;
 
     @PostMapping
-    public Long save(@RequestBody PostsSaveRequestDto requestDto) {
-        return postsService.save(requestDto);
+    public Long save(@RequestBody PostsSaveRequestDto requestDto, @LoginUser SessionUser sessionUser){
+        System.out.println("컨트롤러에 들어왔나요?");
+        return postsService.save(requestDto, sessionUser.getEmail());
     }
 
     @GetMapping

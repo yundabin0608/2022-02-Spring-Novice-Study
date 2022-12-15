@@ -1,15 +1,13 @@
 package com.jojoldu.book.springboot.domain.posts;
 
 import com.jojoldu.book.springboot.domain.BaseTimeEntity;
+import com.jojoldu.book.springboot.domain.comments.Comments;
+import com.jojoldu.book.springboot.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor // @Getter 와 @NoArgsConstructor(기본 생성자 자동 추가, public Post(){}의 효과) 는 롬복의 어노테이션으로 필수 아님
@@ -26,13 +24,18 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    private String author;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "posts", fetch=FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Comments> comments;
 
     @Builder // 해당 클래스의 빌더 패턴 클래스 생성
-    public Posts(String title, String content, String author) {
+    public Posts(String title, String content,User user){
+        this.user = user;
         this.title = title;
         this.content = content;
-        this.author = author;
     }
 
     public void update(String title, String content) {
