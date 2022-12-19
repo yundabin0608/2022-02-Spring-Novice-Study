@@ -1,5 +1,5 @@
 {{>layout/header}}
-
+<a href="/mypage" role="button" class="btn btn-secondary" style="text-decoration:none; color: black">마이페이지로 가기</a>
 <table class="table table-horizontal table-bordered">
     <thead class="thead-strong">
     <tr>
@@ -12,7 +12,7 @@
     {{#comments}}
         <tr>
             <td><a href="/posts/detail/{{posts.id}}">{{posts.id}}</a></td>
-            <td>{{posts.title}}</td>
+            <td><a href="/posts/detail/{{posts.id}}">{{posts.title}}></a></td>
             <td>{{contents}}</td>
         </tr>
     {{/comments}}
